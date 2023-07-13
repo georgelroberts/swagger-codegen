@@ -33,7 +33,7 @@ class UserApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def create_user(self, body, **kwargs):  # noqa: E501
+    def create_user(self, body, **kwargs):    # noqa: E501
         """Create user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -49,13 +49,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_user_with_http_info(body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_user_with_http_info(body, **kwargs)  # noqa: E501
-            return data
+        return self.create_user_with_http_info(body, **kwargs)  # noqa: E501
 
-    def create_user_with_http_info(self, body, **kwargs):  # noqa: E501
+    def create_user_with_http_info(self, body, **kwargs):    # noqa: E501
         """Create user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -71,18 +67,18 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
+        all_params = [
+            'body',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_user" % key
+                    f"Got an unexpected keyword argument '{key}' to method create_user"
                 )
             params[key] = val
         del params['kwargs']
@@ -97,18 +93,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        body_params = params.get('body', None)
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -128,7 +121,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_users_with_array_input(self, body, **kwargs):  # noqa: E501
+    def create_users_with_array_input(self, body, **kwargs):    # noqa: E501
         """Creates list of users with given input array  # noqa: E501
 
           # noqa: E501
@@ -144,13 +137,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_users_with_array_input_with_http_info(body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_users_with_array_input_with_http_info(body, **kwargs)  # noqa: E501
-            return data
+        return self.create_users_with_array_input_with_http_info(body, **kwargs)  # noqa: E501
 
-    def create_users_with_array_input_with_http_info(self, body, **kwargs):  # noqa: E501
+    def create_users_with_array_input_with_http_info(self, body, **kwargs):    # noqa: E501
         """Creates list of users with given input array  # noqa: E501
 
           # noqa: E501
@@ -166,18 +155,18 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
+        all_params = [
+            'body',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_users_with_array_input" % key
+                    f"Got an unexpected keyword argument '{key}' to method create_users_with_array_input"
                 )
             params[key] = val
         del params['kwargs']
@@ -192,18 +181,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        body_params = params.get('body', None)
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -223,7 +209,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def create_users_with_list_input(self, body, **kwargs):  # noqa: E501
+    def create_users_with_list_input(self, body, **kwargs):    # noqa: E501
         """Creates list of users with given input array  # noqa: E501
 
           # noqa: E501
@@ -239,13 +225,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.create_users_with_list_input_with_http_info(body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.create_users_with_list_input_with_http_info(body, **kwargs)  # noqa: E501
-            return data
+        return self.create_users_with_list_input_with_http_info(body, **kwargs)  # noqa: E501
 
-    def create_users_with_list_input_with_http_info(self, body, **kwargs):  # noqa: E501
+    def create_users_with_list_input_with_http_info(self, body, **kwargs):    # noqa: E501
         """Creates list of users with given input array  # noqa: E501
 
           # noqa: E501
@@ -261,18 +243,18 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
+        all_params = [
+            'body',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method create_users_with_list_input" % key
+                    f"Got an unexpected keyword argument '{key}' to method create_users_with_list_input"
                 )
             params[key] = val
         del params['kwargs']
@@ -287,18 +269,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        body_params = params.get('body', None)
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -318,7 +297,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def delete_user(self, username, **kwargs):  # noqa: E501
+    def delete_user(self, username, **kwargs):    # noqa: E501
         """Delete user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -334,13 +313,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.delete_user_with_http_info(username, **kwargs)  # noqa: E501
-        else:
-            (data) = self.delete_user_with_http_info(username, **kwargs)  # noqa: E501
-            return data
+        return self.delete_user_with_http_info(username, **kwargs)  # noqa: E501
 
-    def delete_user_with_http_info(self, username, **kwargs):  # noqa: E501
+    def delete_user_with_http_info(self, username, **kwargs):    # noqa: E501
         """Delete user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -356,18 +331,18 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['username']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
         params = locals()
+        all_params = [
+            'username',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method delete_user" % key
+                    f"Got an unexpected keyword argument '{key}' to method delete_user"
                 )
             params[key] = val
         del params['kwargs']
@@ -384,16 +359,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -413,7 +387,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def get_user_by_name(self, username, **kwargs):  # noqa: E501
+    def get_user_by_name(self, username, **kwargs):    # noqa: E501
         """Get user by user name  # noqa: E501
 
           # noqa: E501
@@ -429,13 +403,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.get_user_by_name_with_http_info(username, **kwargs)  # noqa: E501
-        else:
-            (data) = self.get_user_by_name_with_http_info(username, **kwargs)  # noqa: E501
-            return data
+        return self.get_user_by_name_with_http_info(username, **kwargs)  # noqa: E501
 
-    def get_user_by_name_with_http_info(self, username, **kwargs):  # noqa: E501
+    def get_user_by_name_with_http_info(self, username, **kwargs):    # noqa: E501
         """Get user by user name  # noqa: E501
 
           # noqa: E501
@@ -451,18 +421,18 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['username']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
         params = locals()
+        all_params = [
+            'username',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method get_user_by_name" % key
+                    f"Got an unexpected keyword argument '{key}' to method get_user_by_name"
                 )
             params[key] = val
         del params['kwargs']
@@ -479,16 +449,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -508,7 +477,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def login_user(self, username, password, **kwargs):  # noqa: E501
+    def login_user(self, username, password, **kwargs):    # noqa: E501
         """Logs user into the system  # noqa: E501
 
           # noqa: E501
@@ -525,13 +494,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.login_user_with_http_info(username, password, **kwargs)  # noqa: E501
-        else:
-            (data) = self.login_user_with_http_info(username, password, **kwargs)  # noqa: E501
-            return data
+        return self.login_user_with_http_info(username, password, **kwargs)  # noqa: E501
 
-    def login_user_with_http_info(self, username, password, **kwargs):  # noqa: E501
+    def login_user_with_http_info(self, username, password, **kwargs):    # noqa: E501
         """Logs user into the system  # noqa: E501
 
           # noqa: E501
@@ -548,18 +513,19 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['username', 'password']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
         params = locals()
+        all_params = [
+            'username',
+            'password',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method login_user" % key
+                    f"Got an unexpected keyword argument '{key}' to method login_user"
                 )
             params[key] = val
         del params['kwargs']
@@ -582,16 +548,15 @@ class UserApi(object):
         if 'password' in params:
             query_params.append(('password', params['password']))  # noqa: E501
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -611,7 +576,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def logout_user(self, **kwargs):  # noqa: E501
+    def logout_user(self, **kwargs):    # noqa: E501
         """Logs out current logged in user session  # noqa: E501
 
           # noqa: E501
@@ -626,13 +591,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.logout_user_with_http_info(**kwargs)  # noqa: E501
-        else:
-            (data) = self.logout_user_with_http_info(**kwargs)  # noqa: E501
-            return data
+        return self.logout_user_with_http_info(**kwargs)  # noqa: E501
 
-    def logout_user_with_http_info(self, **kwargs):  # noqa: E501
+    def logout_user_with_http_info(self, **kwargs):    # noqa: E501
         """Logs out current logged in user session  # noqa: E501
 
           # noqa: E501
@@ -647,18 +608,17 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
         params = locals()
+        all_params = [
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method logout_user" % key
+                    f"Got an unexpected keyword argument '{key}' to method logout_user"
                 )
             params[key] = val
         del params['kwargs']
@@ -669,16 +629,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
         body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 
@@ -698,7 +657,7 @@ class UserApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def update_user(self, username, body, **kwargs):  # noqa: E501
+    def update_user(self, username, body, **kwargs):    # noqa: E501
         """Updated user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -715,13 +674,9 @@ class UserApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.update_user_with_http_info(username, body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.update_user_with_http_info(username, body, **kwargs)  # noqa: E501
-            return data
+        return self.update_user_with_http_info(username, body, **kwargs)  # noqa: E501
 
-    def update_user_with_http_info(self, username, body, **kwargs):  # noqa: E501
+    def update_user_with_http_info(self, username, body, **kwargs):    # noqa: E501
         """Updated user  # noqa: E501
 
         This can only be done by the logged in user.  # noqa: E501
@@ -738,18 +693,19 @@ class UserApi(object):
                  returns the request thread.
         """
 
-        all_params = ['username', 'body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
+        all_params = [
+            'username',
+            'body',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         params = locals()
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method update_user" % key
+                    f"Got an unexpected keyword argument '{key}' to method update_user"
                 )
             params[key] = val
         del params['kwargs']
@@ -770,18 +726,15 @@ class UserApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
-        body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/xml', 'application/json'])  # noqa: E501
-
+        body_params = params.get('body', None)
+        header_params = {
+            'Accept': self.api_client.select_header_accept(
+                ['application/xml', 'application/json']
+            )
+        }
         # Authentication setting
         auth_settings = []  # noqa: E501
 

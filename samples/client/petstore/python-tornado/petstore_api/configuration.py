@@ -60,8 +60,7 @@ class Configuration(object):
         self.access_token = ""
 
         # Logging Settings
-        self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("petstore_api")
+        self.logger = {"package_logger": logging.getLogger("petstore_api")}
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
@@ -208,12 +207,10 @@ class Configuration(object):
 
         if self.refresh_api_key_hook:
             self.refresh_api_key_hook(self)
-        
-        key = self.api_key.get(identifier)
-        if key:
-            prefix = self.api_key_prefix.get(identifier)
-            if prefix:
-                return "%s %s" % (prefix, key)
+
+        if key := self.api_key.get(identifier):
+            if prefix := self.api_key_prefix.get(identifier):
+                return f"{prefix} {key}"
             else:
                 return key
 
@@ -223,7 +220,7 @@ class Configuration(object):
         :return: The token for basic HTTP authentication.
         """
         return urllib3.util.make_headers(
-            basic_auth=self.username + ':' + self.password
+            basic_auth=f'{self.username}:{self.password}'
         ).get('authorization')
 
     def auth_settings(self):
@@ -232,36 +229,30 @@ class Configuration(object):
         :return: The Auth Settings information dict.
         """
         return {
-            'api_key':
-                {
-                    'type': 'api_key',
-                    'in': 'header',
-                    'key': 'api_key',
-                    'value': self.get_api_key_with_prefix('api_key')
-                },
-            'api_key_query':
-                {
-                    'type': 'api_key',
-                    'in': 'query',
-                    'key': 'api_key_query',
-                    'value': self.get_api_key_with_prefix('api_key_query')
-                },
-            'http_basic_test':
-                {
-                    'type': 'basic',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': self.get_basic_auth_token()
-                },
-
-            'petstore_auth':
-                {
-                    'type': 'oauth2',
-                    'in': 'header',
-                    'key': 'Authorization',
-                    'value': 'Bearer ' + self.access_token
-                },
-
+            'api_key': {
+                'type': 'api_key',
+                'in': 'header',
+                'key': 'api_key',
+                'value': self.get_api_key_with_prefix('api_key'),
+            },
+            'api_key_query': {
+                'type': 'api_key',
+                'in': 'query',
+                'key': 'api_key_query',
+                'value': self.get_api_key_with_prefix('api_key_query'),
+            },
+            'http_basic_test': {
+                'type': 'basic',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': self.get_basic_auth_token(),
+            },
+            'petstore_auth': {
+                'type': 'oauth2',
+                'in': 'header',
+                'key': 'Authorization',
+                'value': f'Bearer {self.access_token}',
+            },
         }
 
     def to_debug_report(self):

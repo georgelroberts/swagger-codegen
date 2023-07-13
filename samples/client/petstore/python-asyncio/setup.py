@@ -11,6 +11,7 @@
 """
 
 
+
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "petstore-api"
@@ -26,10 +27,9 @@ REQUIRES = [
     "certifi>=2017.4.17",
     "python-dateutil>=2.1",
     "six>=1.10",
-    "urllib3>=1.23"
+    "urllib3>=1.23",
+    "aiohttp",
 ]
-    
-REQUIRES.append("aiohttp")
 
 setup(
     name=NAME,

@@ -123,7 +123,7 @@ class RESTClientObject(object):
         }
 
         if query_params:
-            args["url"] += '?' + urlencode(query_params)
+            args["url"] += f'?{urlencode(query_params)}'
 
         # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
         if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:

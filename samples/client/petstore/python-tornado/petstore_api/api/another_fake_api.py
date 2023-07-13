@@ -33,7 +33,7 @@ class AnotherFakeApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def test_special_tags(self, body, **kwargs):  # noqa: E501
+    def test_special_tags(self, body, **kwargs):    # noqa: E501
         """To test special tags  # noqa: E501
 
         To test special tags  # noqa: E501
@@ -49,13 +49,9 @@ class AnotherFakeApi(object):
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.test_special_tags_with_http_info(body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.test_special_tags_with_http_info(body, **kwargs)  # noqa: E501
-            return data
+        return self.test_special_tags_with_http_info(body, **kwargs)  # noqa: E501
 
-    def test_special_tags_with_http_info(self, body, **kwargs):  # noqa: E501
+    def test_special_tags_with_http_info(self, body, **kwargs):    # noqa: E501
         """To test special tags  # noqa: E501
 
         To test special tags  # noqa: E501
@@ -71,18 +67,18 @@ class AnotherFakeApi(object):
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
         params = locals()
+        all_params = [
+            'body',
+            'async_req',
+            '_return_http_data_only',
+            '_preload_content',
+            '_request_timeout',
+        ]
         for key, val in six.iteritems(params['kwargs']):
             if key not in all_params:
                 raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method test_special_tags" % key
+                    f"Got an unexpected keyword argument '{key}' to method test_special_tags"
                 )
             params[key] = val
         del params['kwargs']
@@ -97,18 +93,14 @@ class AnotherFakeApi(object):
 
         query_params = []
 
-        header_params = {}
-
         form_params = []
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
+        body_params = params['body']
+        header_params = {
+            'Accept': self.api_client.select_header_accept(['application/json'])
+        }
         # HTTP header `Content-Type`
         header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
             ['application/json'])  # noqa: E501

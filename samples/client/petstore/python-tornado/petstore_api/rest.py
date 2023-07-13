@@ -36,10 +36,7 @@ class RESTResponse(io.IOBase):
 
         if resp.body:
             # In Python 3, the response body is utf-8 encoded bytes.
-            if six.PY3:
-                self.data = resp.body.decode('utf-8')
-            else:
-                self.data = resp.body
+            self.data = resp.body.decode('utf-8') if six.PY3 else resp.body
         else:
             self.data = None
 
@@ -117,7 +114,7 @@ class RESTClientObject(object):
         post_params = post_params or {}
 
         if query_params:
-            request.url += '?' + urlencode(query_params)
+            request.url += f'?{urlencode(query_params)}'
 
         # For `POST`, `PUT`, `PATCH`, `OPTIONS`, `DELETE`
         if method in ['POST', 'PUT', 'PATCH', 'OPTIONS', 'DELETE']:
